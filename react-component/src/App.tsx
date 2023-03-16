@@ -1,9 +1,24 @@
 import './App.css';
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { MainPage } from './pages/mainPage';
+import { AboutPage } from './pages/about';
+import { ErrorPage } from './pages/notFound';
+import { Layout } from './components/layout';
 
 class App extends React.Component {
   render() {
-    return <h1>Hello, react!</h1>;
+    return (
+      <>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<MainPage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Route>
+        </Routes>
+      </>
+    );
   }
 }
 
