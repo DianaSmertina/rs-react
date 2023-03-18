@@ -32,10 +32,9 @@ export class Cards extends React.Component<object, { dogs: Array<Dog> }> {
   }
 
   render() {
-    return (
-      <div className="cards">
-        {this.state.dogs?.length > 0 ? <Card dog={this.state.dogs[0]} /> : ''}
-      </div>
-    );
+    const elemArr = this.state.dogs.slice(0).map((el, i) => {
+      return <Card dog={el} key={i} />;
+    });
+    return <div className="cards">{...elemArr}</div>;
   }
 }
