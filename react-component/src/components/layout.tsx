@@ -5,7 +5,7 @@ export class Layout extends React.Component {
   render() {
     return (
       <>
-        <header>
+        <header className="header">
           <NavLink to="/">Main</NavLink>
           <NavLink to="/about">About</NavLink>
         </header>

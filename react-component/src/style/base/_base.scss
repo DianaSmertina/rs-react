@@ -26,6 +26,14 @@ h2 {
   font-size: 1.8rem;
 }
 
-.active {
+.header .active {
   color: blue;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a {
+  text-decoration: none
 }

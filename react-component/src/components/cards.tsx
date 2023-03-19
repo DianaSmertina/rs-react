@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card } from './card';
+import data from '../assets/data/data.json';
 
-interface Breads {
+export interface Breads {
   breeds: Array<Dog>;
 }
 
@@ -22,13 +23,16 @@ export class Cards extends React.Component<object, { dogs: Array<Dog> }> {
   }
 
   componentDidMount() {
-    fetch('./src/assets/data/data.json')
-      .then((responce) => responce.json())
-      .then((data: Breads) => {
-        this.setState({
-          dogs: data.breeds,
-        });
-      });
+    // fetch('./src/assets/data/data.json')
+    //   .then((responce) => responce.json())
+    //   .then((data: Breads) => {
+    //     this.setState({
+    //       dogs: data.breeds,
+    //     });
+    //   });
+    this.setState({
+      dogs: data.breeds,
+    });
   }
 
   render() {

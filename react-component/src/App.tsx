@@ -5,7 +5,7 @@ import { AboutPage } from './pages/about';
 import { ErrorPage } from './pages/notFound';
 import { Layout } from './components/layout';
 
-class App extends React.Component {
+export class App extends React.Component {
   render() {
     return (
       <>
