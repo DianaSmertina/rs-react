@@ -23,13 +23,6 @@ export class Cards extends React.Component<object, { dogs: Array<Dog> }> {
   }
 
   componentDidMount() {
-    // fetch('./src/assets/data/data.json')
-    //   .then((responce) => responce.json())
-    //   .then((data: Breads) => {
-    //     this.setState({
-    //       dogs: data.breeds,
-    //     });
-    //   });
     this.setState({
       dogs: data.breeds,
     });
