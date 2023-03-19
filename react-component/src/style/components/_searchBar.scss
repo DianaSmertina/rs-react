@@ -1,0 +1,28 @@
+.search {
+  height: 30px;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 20px auto 30px;
+}
+
+.search__submit-btn {
+  width: 25px;
+  height: 25px;
+  border: none;
+  outline: none;
+  background-color: white;
+  background-image: url(../assets/icons/search-outline.svg);
+  background-size: 25px 25px;
+  margin: 0 5px;
+}
+
+.search__search-bar {
+  border: none;
+  outline: none;
+  width: 80%;
+  vertical-align: middle;
+}
