@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { AboutPage } from '../pages/about';
+import { MainPage } from '../pages/mainPage';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter } from 'react-router-dom';
 
 test('Renders about page correctly', () => {
   render(
     <BrowserRouter>
-      <AboutPage />
+      <MainPage />
     </BrowserRouter>
   );
-  expect(screen.getByText('About us page')).toBeInTheDocument();
+  expect(screen.getByText('Main page')).toBeInTheDocument();
 });

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Layout } from '../components/layout';
+import { Header } from '../components/header';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 test('links in the header work', () => {
   render(
     <BrowserRouter>
-      <Layout />
+      <Header title="Main page" />
     </BrowserRouter>
   );
 
