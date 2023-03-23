@@ -3,15 +3,20 @@ import { Route, Routes } from 'react-router-dom';
 import { MainPage } from './pages/mainPage';
 import { AboutPage } from './pages/about';
 import { ErrorPage } from './pages/notFound';
+import { Layout } from './components/layout';
+import { FormsPage } from './pages/forms';
 
 export class App extends React.Component {
   render() {
     return (
       <>
         <Routes>
-          <Route index element={<MainPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<MainPage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="forms" element={<FormsPage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Route>
         </Routes>
       </>
     );
