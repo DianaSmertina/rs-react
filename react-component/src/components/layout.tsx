@@ -8,7 +8,7 @@ export class Layout extends React.Component {
         <header className="header">
           <NavLink to="/">Main</NavLink>
           <NavLink to="/about">About</NavLink>
-          <NavLink to="/forms">Forms</NavLink>
+          <NavLink to="/form">Form</NavLink>
         </header>
         <Outlet />
       </>

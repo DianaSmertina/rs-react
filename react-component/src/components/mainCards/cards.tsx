@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from './card';
-import data from '../assets/data/data.json';
+import data from '../../assets/data/data.json';
 
 export interface Breads {
   breeds: Array<Dog>;
@@ -32,6 +32,6 @@ export class Cards extends React.Component<object, { dogs: Array<Dog> }> {
     const elemArr = this.state.dogs.slice(0).map((el, i) => {
       return <Card dog={el} key={i} />;
     });
-    return <div className="cards">{...elemArr}</div>;
+    return <div className="cards">{elemArr}</div>;
   }
 }

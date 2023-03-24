@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Cards } from '../components/cards';
+import { Cards } from '../components/mainCards/cards';
 import React from 'react';
 import data from '../assets/data/data.json';
 
