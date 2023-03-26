@@ -6,10 +6,10 @@ export function validateFormFields(card: FormDogCard, fields: Fields) {
   const newFields = Object.assign({}, fields);
   let errorCount = 0;
   if (
-    newCard.dogName !== undefined &&
-    newCard.dogName.length > 1 &&
-    newCard.dogName[0].toUpperCase() === newCard.dogName[0] &&
-    /^[a-zA-Z\u00C0-\u1FFF\u2800-\uFFFD]+$/.test(newCard.dogName)
+    newCard.name !== undefined &&
+    newCard.name.length > 1 &&
+    newCard.name[0].toUpperCase() === newCard.name[0] &&
+    /^[a-zA-Z\u00C0-\u1FFF\u2800-\uFFFD]+$/.test(newCard.name)
   ) {
     newFields.dogName = 'form__no-errors';
   } else {
@@ -38,7 +38,7 @@ export function validateFormFields(card: FormDogCard, fields: Fields) {
     errorCount++;
   }
 
-  if (newCard.photoURL) {
+  if (newCard.image_url) {
     newFields.photo = 'form__no-errors';
   } else {
     newFields.photo = 'form__errors';

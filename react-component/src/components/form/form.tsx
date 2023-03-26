@@ -1,6 +1,7 @@
 import { FormDogCard } from '../../pages/formPage';
 import React from 'react';
 import { validateFormFields } from '../../utilites/utilites';
+import { PopUp } from './popUp';
 
 export interface Fields {
   dogName: string;
@@ -15,22 +16,17 @@ export class MyForm extends React.Component<
   { onSubmit: (card: FormDogCard) => void },
   { isFilledRight: Fields; showPopup: boolean }
 > {
-  dogName: React.RefObject<HTMLInputElement>;
-  startDate: React.RefObject<HTMLInputElement>;
-  walkType: React.RefObject<HTMLSelectElement>;
-  isTrainedYes: React.RefObject<HTMLInputElement>;
-  isTrainedNo: React.RefObject<HTMLInputElement>;
-  equipment: React.RefObject<HTMLInputElement>;
-  photo: React.RefObject<HTMLInputElement>;
+  dogName = React.createRef<HTMLInputElement>();
+  startDate = React.createRef<HTMLInputElement>();
+  walkType = React.createRef<HTMLSelectElement>();
+  isTrainedYes = React.createRef<HTMLInputElement>();
+  isTrainedNo = React.createRef<HTMLInputElement>();
+  equipment = React.createRef<HTMLInputElement>();
+  photo = React.createRef<HTMLInputElement>();
+  form = React.createRef<HTMLFormElement>();
+
   constructor(props: { onSubmit: (card: FormDogCard) => void }) {
     super(props);
-    this.dogName = React.createRef();
-    this.startDate = React.createRef();
-    this.walkType = React.createRef();
-    this.isTrainedYes = React.createRef();
-    this.isTrainedNo = React.createRef();
-    this.equipment = React.createRef();
-    this.photo = React.createRef();
     this.state = {
       isFilledRight: {
         dogName: 'form__no-errors',
@@ -44,38 +40,49 @@ export class MyForm extends React.Component<
     };
   }
 
-  handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault();
+  showPopUp() {
+    this.setState({ showPopup: true });
+    setTimeout(() => {
+      this.setState({ showPopup: false });
+    }, 1000);
+  }
+
+  createCard() {
     const photo = this.photo.current ? this.photo.current.files : [];
     const photoURL = photo?.length ? window.URL.createObjectURL(photo[0]) : '';
-    const card: FormDogCard = {
-      dogName: this.dogName.current?.value,
+    return {
+      name: this.dogName.current?.value,
       startDate: this.startDate.current?.value,
       walkType: this.walkType.current?.value,
       isTrainedYes: this.isTrainedYes.current?.checked,
       isTrainedNo: this.isTrainedNo.current?.checked,
       equipment: this.equipment.current?.checked,
-      photoURL: photoURL,
+      image_url: photoURL,
     };
-    const result = validateFormFields(card, this.state.isFilledRight);
-    this.setState({ isFilledRight: result.newFields });
-    if (!result.errorCount) {
+  }
+
+  clearForm() {
+    this.form.current?.reset();
+  }
+
+  handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+
+    const card = this.createCard();
+    const validResult = validateFormFields(card, this.state.isFilledRight);
+
+    this.setState({ isFilledRight: validResult.newFields });
+    if (!validResult.errorCount) {
       this.props.onSubmit(card);
-      this.setState({ showPopup: true });
-      setTimeout(() => {
-        this.setState({ showPopup: false });
-      }, 2000);
+      this.showPopUp();
+      this.clearForm();
     }
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="form">
-        {this.state.showPopup && (
-          <div className="form__pop-up">
-            <h2 className="pop-up-text">Data saved</h2>
-          </div>
-        )}
+      <form onSubmit={this.handleSubmit} className="form" ref={this.form}>
+        {this.state.showPopup && <PopUp />}
         <h2>Do you want to find a dog walker for your pet?</h2>
         <label>
           Dog name:
