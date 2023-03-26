@@ -14,6 +14,13 @@
   margin-right: 10px;
 }
 
+.form__no-errors {
+	display: none;
+}
+
+.form__errors {
+	color: red;
+}
 // .form__switch {
 //   display: flex;
 // 	margin-bottom: 36px;

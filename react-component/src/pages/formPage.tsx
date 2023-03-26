@@ -4,11 +4,12 @@ import { FormCard } from '../components/form/formCard';
 
 export interface FormDogCard {
   dogName: string | undefined;
-  dogBithday: string | undefined;
-  dogBreeds: string | undefined;
-  isTrained: boolean | undefined;
-  acception: boolean | undefined;
-  photo: string;
+  startDate: string | undefined;
+  walkType: string | undefined;
+  isTrainedYes: boolean | undefined;
+  isTrainedNo: boolean | undefined;
+  equipment: boolean | undefined;
+  photoURL: string;
 }
 
 export class FormPage extends React.Component<object, { cards: Array<FormDogCard> | [] }> {
