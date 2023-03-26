@@ -21,6 +21,37 @@
 .form__errors {
 	color: red;
 }
+
+.form__pop-up {
+	background-color: rgba(28, 28, 28, 0.822);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  z-index: 5;
+}
+
+.pop-up-text {
+	width: 50%;
+	max-width: 400px;
+	height: calc(100vh * 0.2);
+	background-color: white;
+	position: absolute;
+	padding: 0 20px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 7px;
+}
+
 // .form__switch {
 //   display: flex;
 // 	margin-bottom: 36px;

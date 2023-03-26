@@ -13,7 +13,7 @@ export interface Fields {
 
 export class MyForm extends React.Component<
   { onSubmit: (card: FormDogCard) => void },
-  { isFilledRight: Fields }
+  { isFilledRight: Fields; showPopup: boolean }
 > {
   dogName: React.RefObject<HTMLInputElement>;
   startDate: React.RefObject<HTMLInputElement>;
@@ -40,6 +40,7 @@ export class MyForm extends React.Component<
         equipment: 'form__no-errors',
         photo: 'form__no-errors',
       },
+      showPopup: false,
     };
   }
 
@@ -56,15 +57,25 @@ export class MyForm extends React.Component<
       equipment: this.equipment.current?.checked,
       photoURL: photoURL,
     };
-    this.setState((prevState) => {
-      return { isFilledRight: validateFormFields(card, prevState.isFilledRight) };
-    });
-    this.props.onSubmit(card);
+    const result = validateFormFields(card, this.state.isFilledRight);
+    this.setState({ isFilledRight: result.newFields });
+    if (!result.errorCount) {
+      this.props.onSubmit(card);
+      this.setState({ showPopup: true });
+      setTimeout(() => {
+        this.setState({ showPopup: false });
+      }, 2000);
+    }
   };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="form">
+        {this.state.showPopup && (
+          <div className="form__pop-up">
+            <h2 className="pop-up-text">Data saved</h2>
+          </div>
+        )}
         <h2>Do you want to find a dog walker for your pet?</h2>
         <label>
           Dog name:
