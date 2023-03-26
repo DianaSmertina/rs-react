@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { Card } from '../components/mainCards/card';
 import React from 'react';
 import { Dog } from '../components/mainCards/cards';
 import '@testing-library/jest-dom/extend-expect';
+import { Card } from '../components/mainCards/cardTemplate';
 
 const cardObj: Dog = {
   name: 'Labrador Retriever',
@@ -14,7 +14,7 @@ const cardObj: Dog = {
 };
 
 test('Card have all fields', () => {
-  render(<Card dog={cardObj} />);
+  render(<Card card={cardObj} />);
   expect(screen.getByText('Labrador Retriever')).toBeInTheDocument();
   expect(screen.getByText('56sm')).toBeInTheDocument();
   expect(screen.getByText('30kg')).toBeInTheDocument();

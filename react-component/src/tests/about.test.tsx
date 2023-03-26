@@ -10,5 +10,5 @@ test('Renders about page correctly', () => {
       <AboutPage />
     </BrowserRouter>
   );
-  expect(screen.getByText('About us page')).toBeInTheDocument();
+  expect(screen.getByText('About page')).toBeInTheDocument();
 });

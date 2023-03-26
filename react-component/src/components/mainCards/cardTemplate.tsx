@@ -17,7 +17,7 @@ export class Card extends React.Component<{ card: Dog & FormDogCard }, object> {
   render() {
     const dogBlocks = [
       { title: 'Average Height: ', value: this.props.card.average_height_cm + 'sm' },
-      { title: 'Average Weight: ', value: this.props.card.weight_kg + 'sm' },
+      { title: 'Average Weight: ', value: this.props.card.weight_kg + 'kg' },
       { title: '', value: this.props.card.description },
     ];
 

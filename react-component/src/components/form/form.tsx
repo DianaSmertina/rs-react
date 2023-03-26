@@ -81,19 +81,31 @@ export class MyForm extends React.Component<
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="form" ref={this.form}>
+      <form onSubmit={this.handleSubmit} className="form" ref={this.form} data-testid="form">
         {this.state.showPopup && <PopUp />}
         <h2 className="form__title">Do you want to find a dog walker for your pet?</h2>
         <label>
           Dog name:
-          <input type="text" name="dogName" ref={this.dogName} className="form__input"></input>
+          <input
+            type="text"
+            name="dogName"
+            ref={this.dogName}
+            className="form__input"
+            data-testid="dogName"
+          ></input>
           <div className={this.state.isFilledRight.dogName}>
             Please enter a capitalized name of 2 characters or more
           </div>
         </label>
         <label>
-          Select a date when the dog walker can start
-          <input type="date" name="startDate" ref={this.startDate} className="form__input"></input>
+          Select a date when the dog walker can start:
+          <input
+            type="date"
+            name="startDate"
+            ref={this.startDate}
+            className="form__input"
+            data-testid="startDate"
+          ></input>
           <div className={this.state.isFilledRight.startDate}>
             Please enter a date tomorrow or later
           </div>
@@ -150,6 +162,7 @@ export class MyForm extends React.Component<
             ref={this.photo}
             accept="image/*"
             className="form__input-file"
+            data-testid="photo"
           ></input>
           <span className="form__input-file-span"></span>
           <div className={this.state.isFilledRight.photo}>Please download image</div>
