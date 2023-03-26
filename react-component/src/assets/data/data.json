@@ -4,14 +4,14 @@
       "name": "Labrador Retriever",
       "image_url": "https://www.akc.org/wp-content/uploads/2017/11/Labrador-Retriever-On-White-01.jpg",
       "average_height_cm": 56,
-      "description": "The Labrador Retriever is a friendly and active breed that loves to play and is great with kids. They are known for their intelligence and trainability and are often used as service and therapy dogs. They originated in Newfoundland, Canada.",
+      "description": "The Labrador Retriever is a friendly and active breed that loves to play and is great with kids. They are known for their intelligence and trainability and are often used as service and therapy dogs.",
       "weight_kg": 30
     },
     {
       "name": "German Shepherd",
       "image_url": "https://www.akc.org/wp-content/uploads/2017/11/German-Shepherd-on-White-00.jpg",
       "average_height_cm": 61,
-      "description": "The German Shepherd is a loyal and protective breed that is often used as a police or military dog. They are intelligent and obedient, and make great companions for active families. They originated in Germany.",
+      "description": "The German Shepherd is a loyal and protective breed that is often used as a police or military dog. They are intelligent and obedient, and make great companions for active families.",
       "weight_kg": 30
     },
     {
@@ -25,7 +25,7 @@
       "name": "Poodle",
       "image_url": "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/24135039/Standard-Poodle-laying-down-in-the-grass.jpg",
       "average_height_cm": 28,
-      "description": "The Poodle is a highly intelligent and trainable breed that comes in a variety of sizes, including toy, miniature, and standard. They are known for their curly, hypoallergenic coat and make great family pets. They originated in Germany and France.",
+      "description": "The Poodle is a highly intelligent and trainable breed that comes in a variety of sizes, including toy, miniature, and standard. They are known for their curly, hypoallergenic coat and make great family pets.",
       "weight_kg": 22
     },
     {
@@ -53,21 +53,21 @@
       "name": "Airedale Terrier",
       "image_url": "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/02165956/Airedale-Terrier-standing-stacked-outdoors.jpg",
       "average_height_cm": 58,
-      "description": "His size, strength, and unflagging spirit have earned the Airedale Terrier the nickname 'The King of Terriers'. The Airedale stands among the world's most versatile dog breeds and has distinguished himself as hunter, athlete, and companion.",
+      "description": "His size, strength, and unflagging spirit have earned the Airedale Terrier the nickname 'The King of Terriers'. The Airedale stands among the world's most versatile dog breeds.",
       "weight_kg": 27
     },
     {
       "name": "Dalmatian",
       "image_url": "https://www.akc.org/wp-content/uploads/2017/11/Dalmatian-On-White-01.jpg",
       "average_height_cm": 54,
-      "description": "The dignified Dalmatian, dogdom's citizen of the world, is famed for his spotted coat and unique job description. The Dal was originally bred to guard horses and coaches, and some of the old protective instinct remains. Dals are bright, loyal, and loving house dogs.",
+      "description": "The dignified Dalmatian, dogdom's citizen of the world, is famed for his spotted coat and unique job description. The Dal was originally bred to guard horses and coaches, and some of the old protective instinct remains.",
       "weight_kg": 27
     },
     {
       "name": "Samoyed",
       "image_url": "https://www.akc.org/wp-content/uploads/2017/11/Samoyed-slide-5.jpg",
       "average_height_cm": 55,
-      "description": "The Samoyed is a substantial but graceful dog. These are smart, social, mischievous dogs who demand love and attention. Sammies need a very firm but loving hand in training. As pack animals, they must learn early who the alpha dog is and the alpha dog must be you.",
+      "description": "The Samoyed is a substantial but graceful dog. These are smart, social, mischievous dogs who demand love and attention. Sammies need a very firm but loving hand in training.",
       "weight_kg": 23
     },
     {
@@ -81,7 +81,7 @@
       "name": "Teddy Roosevelt Terrier",
       "image_url": "https://www.akc.org/wp-content/uploads/2017/11/Teddy-Roosevelt-Terrier.jpg",
       "average_height_cm": 30,
-      "description": "The Teddy Roosevelt Terrier is a lively, friendly, affectionate dog with his family but can be somewhat of a one-person dog. With his strong protective nature and well-developed pack instincts, the Teddy Roosevelt Terrier gets along well with children, cats, and other dogs.",
+      "description": "The Teddy Roosevelt Terrier is a lively, friendly, affectionate dog with his family but can be somewhat of a one-person dog. With his strong protective nature and well-developed pack instincts.",
       "weight_kg": 9
     }
   ]

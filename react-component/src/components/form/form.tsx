@@ -83,24 +83,24 @@ export class MyForm extends React.Component<
     return (
       <form onSubmit={this.handleSubmit} className="form" ref={this.form}>
         {this.state.showPopup && <PopUp />}
-        <h2>Do you want to find a dog walker for your pet?</h2>
+        <h2 className="form__title">Do you want to find a dog walker for your pet?</h2>
         <label>
           Dog name:
-          <input type="text" name="dogName" ref={this.dogName}></input>
+          <input type="text" name="dogName" ref={this.dogName} className="form__input"></input>
           <div className={this.state.isFilledRight.dogName}>
             Please enter a capitalized name of 2 characters or more
           </div>
         </label>
         <label>
           Select a date when the dog walker can start
-          <input type="date" name="startDate" ref={this.startDate}></input>
+          <input type="date" name="startDate" ref={this.startDate} className="form__input"></input>
           <div className={this.state.isFilledRight.startDate}>
             Please enter a date tomorrow or later
           </div>
         </label>
         <label>
           Choose walk type:
-          <select name="walkType" ref={this.walkType}>
+          <select name="walkType" ref={this.walkType} className="form__input">
             <option value="short">Short walk on 15 minuetes</option>
             <option value="averege">Average half hour walk</option>
             <option value="long">Long walk for a couple of hours with a lot of games</option>
@@ -109,27 +109,52 @@ export class MyForm extends React.Component<
           <div className={this.state.isFilledRight.walkType}>Please select one option</div>
         </label>
         <div className="form__switch">
-          <p className="switch-question">Is dog trained?:</p>
-          <label>
+          <p className="switch-question">Is dog trained?</p>
+          <label className="switch-label">
             Yes
-            <input type="radio" name="switch" value="yes" ref={this.isTrainedYes} defaultChecked />
+            <input
+              type="radio"
+              name="switch"
+              value="yes"
+              ref={this.isTrainedYes}
+              className="switch-radio"
+              defaultChecked
+            />
           </label>
-          <label>
+          <label className="switch-label">
             No
-            <input type="radio" name="switch" value="no" ref={this.isTrainedNo} />
+            <input
+              type="radio"
+              name="switch"
+              value="no"
+              ref={this.isTrainedNo}
+              className="switch-radio"
+            />
           </label>
           <div className={this.state.isFilledRight.isTrained}>Please select one option</div>
         </div>
-        <label>
-          I will provide my equipment for a walk (leash, muzzle, toys, treats)
-          <input type="checkbox" name="equipment" ref={this.equipment}></input>
+        <label className="form__checkbox-label">
+          I will provide leash and muzzle for a walk
+          <input
+            type="checkbox"
+            name="equipment"
+            ref={this.equipment}
+            className="form__checkbox"
+          ></input>
         </label>
         <label>
           Download dog photo
-          <input type="file" name="photo" ref={this.photo} accept="image/*"></input>
+          <input
+            type="file"
+            name="photo"
+            ref={this.photo}
+            accept="image/*"
+            className="form__input-file"
+          ></input>
+          <span className="form__input-file-span"></span>
           <div className={this.state.isFilledRight.photo}>Please download image</div>
         </label>
-        <input type="submit" value="Submit" className="form__submit" />
+        <input type="submit" value="Submit" className="form__submit btn" />
       </form>
     );
   }
