@@ -1,32 +1,33 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-export class SearchBar extends React.Component<object, { search: string }> {
-  constructor(props: object) {
-    super(props);
-    this.state = {
-      search: localStorage.getItem('search') || '',
+export function SearchBar() {
+  const [searchText, setSearchText] = useState('');
+  const searchRef = useRef(searchText);
+
+  useEffect(() => {
+    searchRef.current = searchText;
+  }, [searchText]);
+
+  useEffect(() => {
+    const savedText = localStorage.getItem('search');
+    if (savedText) {
+      setSearchText(savedText);
+    }
+
+    return () => {
+      localStorage.setItem('search', searchRef.current);
     };
-  }
+  }, []);
 
-  componentWillUnmount() {
-    localStorage.setItem('search', this.state.search);
-  }
-
-  render() {
-    return (
-      <div className="search">
-        <input type="submit" value="" className="search__submit-btn" />
-        <input
-          type="search"
-          value={this.state.search}
-          className="search__search-bar"
-          onChange={(e) =>
-            this.setState({
-              search: e.target.value,
-            })
-          }
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="search">
+      <input type="submit" value="" className="search__submit-btn" />
+      <input
+        type="search"
+        value={searchText}
+        className="search__search-bar"
+        onChange={(e) => setSearchText(e.target.value)}
+      />
+    </div>
+  );
 }

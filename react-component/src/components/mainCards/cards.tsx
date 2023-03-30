@@ -14,24 +14,10 @@ export interface Dog {
   weight_kg?: number;
 }
 
-export class Cards extends React.Component<object, { dogs: Array<Dog> }> {
-  constructor(props: object) {
-    super(props);
-    this.state = {
-      dogs: [],
-    };
-  }
+export function CardList() {
+  const dogsElemArr = data.breeds.map((el, i) => {
+    return <Card card={el} key={i} />;
+  });
 
-  componentDidMount() {
-    this.setState({
-      dogs: data.breeds,
-    });
-  }
-
-  render() {
-    const elemArr = this.state.dogs.slice(0).map((el, i) => {
-      return <Card card={el} key={i} />;
-    });
-    return <div className="cards">{elemArr}</div>;
-  }
+  return <div className="cards">{dogsElemArr}</div>;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SearchBar } from '../components/searchBar';
-import { Cards } from '../components/mainCards/cards';
+import { CardList } from '../components/mainCards/cards';
 
 export class MainPage extends React.Component {
   render() {
@@ -8,7 +8,7 @@ export class MainPage extends React.Component {
       <main>
         <h1>Main page</h1>
         <SearchBar />
-        <Cards />
+        <CardList />
       </main>
     );
   }
