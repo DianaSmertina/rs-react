@@ -8,7 +8,7 @@ export interface Breads {
 
 export interface Dog {
   name?: string;
-  image_url?: string;
+  image_url?: string | FileList;
   average_height_cm?: number;
   description?: string;
   weight_kg?: number;
