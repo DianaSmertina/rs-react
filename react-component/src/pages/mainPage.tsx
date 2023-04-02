@@ -1,18 +1,15 @@
 import React from 'react';
 import { SearchBar } from '../components/searchBar';
-import { Cards } from '../components/cards';
-import { Header } from '../components/header';
+import { Cards } from '../components/mainCards/cards';
 
 export class MainPage extends React.Component {
   render() {
     return (
-      <>
-        <Header title="Main page" />
-        <main>
-          <SearchBar />
-          <Cards />
-        </main>
-      </>
+      <main>
+        <h1>Main page</h1>
+        <SearchBar />
+        <Cards />
+      </main>
     );
   }
 }
