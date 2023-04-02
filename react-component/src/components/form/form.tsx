@@ -54,7 +54,7 @@ export function MyForm(props: { onSubmit: (card: FormDogCard) => void }) {
           data-testid="dogName"
         ></input>
         {errors.name && (
-          <div className="form__errors">
+          <div className="form__errors" data-testid="error-message">
             Please enter a capitalized name of 2 characters or more
           </div>
         )}
@@ -73,7 +73,9 @@ export function MyForm(props: { onSubmit: (card: FormDogCard) => void }) {
           data-testid="startDate"
         ></input>
         {errors.startDate && (
-          <div className="form__errors">Please enter a date tomorrow or later</div>
+          <div className="form__errors" data-testid="error-message">
+            Please enter a date tomorrow or later
+          </div>
         )}
       </label>
       <label>
@@ -123,9 +125,13 @@ export function MyForm(props: { onSubmit: (card: FormDogCard) => void }) {
           data-testid="photo"
         ></input>
         <span className="form__input-file-span"></span>
-        {errors.image_url && <div className="form__errors">Please download image</div>}
+        {errors.image_url && (
+          <div className="form__errors" data-testid="error-message">
+            Please download image
+          </div>
+        )}
       </label>
-      <input type="submit" value="Submit" className="form__submit btn" />
+      <input type="submit" value="Submit" className="form__submit btn" data-testid="submit" />
     </form>
   );
 }

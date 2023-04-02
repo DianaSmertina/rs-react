@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { Cards } from '../components/mainCards/cards';
+import { CardList } from '../components/mainCards/cards';
 import React from 'react';
 import data from '../assets/data/data.json';
 
 test('There are all cards', () => {
-  render(<Cards />);
+  render(<CardList />);
   const matches = screen.getAllByText('Average Height:');
   expect(matches.length).toBe(data.breeds.length);
 });
