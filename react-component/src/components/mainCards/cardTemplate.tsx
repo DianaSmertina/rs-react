@@ -1,12 +1,11 @@
 import React from 'react';
-import { FormDogCard } from '../../pages/formPage';
-import { Dog } from './cards';
+import { Character, FormDogCard } from '../../types/types';
 
-export function Card(props: { card: Dog & FormDogCard }) {
+export function Card(props: { card: Character & FormDogCard }) {
   const dogBlocks = [
-    { title: 'Average Height: ', value: props.card.average_height_cm + 'sm' },
-    { title: 'Average Weight: ', value: props.card.weight_kg + 'kg' },
-    { title: '', value: props.card.description },
+    { title: 'Status: ', value: props.card.status },
+    { title: 'Gender: ', value: props.card.gender },
+    { title: 'Species', value: props.card.species },
   ];
 
   const formBlocks = [
@@ -33,11 +32,11 @@ export function Card(props: { card: Dog & FormDogCard }) {
     <div className="card">
       <h2 className="card__dog-name">{props.card.name}</h2>
       <div className="card__img-wrap">
-        {typeof props.card.image_url === 'string' && (
-          <img className="card__dog-img" src={props.card.image_url}></img>
+        {typeof props.card.image === 'string' && (
+          <img className="card__dog-img" src={props.card.image}></img>
         )}
       </div>
-      {props.card.average_height_cm && createBlocks(dogBlocks)}
+      {props.card.id && createBlocks(dogBlocks)}
       {props.card.walkType && createBlocks(formBlocks)}
     </div>
   );

@@ -1,23 +1,25 @@
-import React from 'react';
-import data from '../../assets/data/data.json';
+import React, { useEffect, useState } from 'react';
 import { Card } from './cardTemplate';
-
-export interface Breads {
-  breeds: Array<Dog>;
-}
-
-export interface Dog {
-  name?: string;
-  image_url?: string | FileList;
-  average_height_cm?: number;
-  description?: string;
-  weight_kg?: number;
-}
+import { Character, CharacterResponseResult } from '../../types/types';
 
 export function CardList() {
-  const dogsElemArr = data.breeds.map((el, i) => {
-    return <Card card={el} key={i} />;
-  });
+  const [cards, setCards] = useState<CharacterResponseResult | null>(null);
 
-  return <div className="cards">{dogsElemArr}</div>;
+  useEffect(() => {
+    fetch('https://rickandmortyapi.com/api/character')
+      .then((response) => response.json())
+      .then((data) => {
+        setCards(data);
+      });
+  }, []);
+
+  const getCardsElem = (cardsArr: Array<Character> | undefined) => {
+    if (cardsArr) {
+      return cardsArr.map((el, i) => {
+        return <Card card={el} key={i} />;
+      });
+    }
+  };
+
+  return <div className="cards">{getCardsElem(cards?.results)}</div>;
 }

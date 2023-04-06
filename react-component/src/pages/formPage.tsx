@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 import { Card } from '../components/mainCards/cardTemplate';
 import { MyForm } from '../components/form/form';
-
-export interface FormDogCard {
-  name?: string;
-  startDate?: string;
-  walkType?: string;
-  isTrained?: string;
-  equipment?: boolean;
-  image_url?: FileList | string;
-}
+import { FormDogCard } from '../types/types';
 
 export function FormPage() {
   const [cards, setCards] = useState<Array<FormDogCard | never>>([]);
