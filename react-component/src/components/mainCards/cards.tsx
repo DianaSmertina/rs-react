@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from './cardTemplate';
 import { Character, CharacterResponseResult } from '../../types/types';
+import { Loading } from './loading';
 
 export function CardList() {
-  const [cards, setCards] = useState<CharacterResponseResult | null>(null);
+  const [cards, setCards] = useState<{ isLoaded: boolean; result: CharacterResponseResult | null }>(
+    { isLoaded: false, result: null }
+  );
 
   useEffect(() => {
     fetch('https://rickandmortyapi.com/api/character')
       .then((response) => response.json())
       .then((data) => {
-        setCards(data);
+        setCards({ isLoaded: true, result: data });
       });
   }, []);
 
@@ -21,5 +24,10 @@ export function CardList() {
     }
   };
 
-  return <div className="cards">{getCardsElem(cards?.results)}</div>;
+  return (
+    <div className="cards">
+      {!cards.isLoaded && <Loading />}
+      {cards.isLoaded && getCardsElem(cards?.result?.results)}
+    </div>
+  );
 }
