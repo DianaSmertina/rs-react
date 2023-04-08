@@ -3,7 +3,7 @@ import { SearchBar } from '../components/searchBar';
 import { CardList } from '../components/mainCards/cards';
 
 export function MainPage() {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState(localStorage.getItem('search') || '');
 
   const mainHandleSubmit = (text: string) => {
     setSearchText(text);

@@ -9,14 +9,6 @@ export function CardList(props: { search: string }) {
   );
 
   useEffect(() => {
-    fetch('https://rickandmortyapi.com/api/character')
-      .then((response) => response.json())
-      .then((data) => {
-        setCards({ isLoaded: true, result: data });
-      });
-  }, []);
-
-  useEffect(() => {
     setCards((prevState) => {
       return { isLoaded: false, result: prevState.result };
     });
