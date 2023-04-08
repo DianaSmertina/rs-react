@@ -3,7 +3,7 @@ import { Card } from './cardTemplate';
 import { Character, CharacterResponseResult } from '../../types/types';
 import { Loading } from './loading';
 
-export function CardList(props: { search: string }) {
+export function CardList(props: { search: string; onClick: (cardId: number) => void }) {
   const [cards, setCards] = useState<{ isLoaded: boolean; result: CharacterResponseResult | null }>(
     { isLoaded: false, result: null }
   );
@@ -23,7 +23,7 @@ export function CardList(props: { search: string }) {
   const getCardsElem = (cardsArr: Array<Character> | undefined) => {
     if (cardsArr) {
       return cardsArr.map((el, i) => {
-        return <Card card={el} key={i} />;
+        return <Card card={el} key={i} onClick={(cardId: number) => props.onClick(cardId)} />;
       });
     }
   };

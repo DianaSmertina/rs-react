@@ -1,0 +1,36 @@
+.btn {
+  width: 25px;
+  height: 25px;
+  border: none;
+  outline: none;
+  background-color: white;
+  background-size: 25px 25px;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.btn:active {
+  transform: scale(1.1);
+  background-color: rgb(235, 231, 231);
+  border-radius: 5px;
+}
+
+.submit-btn {
+  background-image: url(../assets/icons/search-outline.svg);
+  margin: 0 5px;
+}
+
+.reset-btn {
+  background-image: url(../assets/icons/delete.svg);
+  position: absolute;
+  right: 5px;
+}
+
+.card-modal__close {
+  background-image: url(../assets/icons/delete.svg);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

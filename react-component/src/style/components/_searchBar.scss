@@ -9,36 +9,6 @@
   margin: 20px auto 30px;
 }
 
-.search__btn {
-  width: 25px;
-  height: 25px;
-  border: none;
-  outline: none;
-  background-color: white;
-  background-size: 25px 25px;
-}
-
-.search__btn:hover {
-  transform: scale(1.1);
-}
-
-.search__btn:active {
-  transform: scale(1.1);
-  background-color: rgb(235, 231, 231);
-  border-radius: 5px;
-}
-
-.submit-btn {
-  background-image: url(../assets/icons/search-outline.svg);
-  margin: 0 5px;
-}
-
-.reset-btn {
-  background-image: url(../assets/icons/delete.svg);
-  position: absolute;
-  right: 5px;
-}
-
 .search__search-bar {
   border: none;
   outline: none;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Character, FormDogCard } from '../../types/types';
 
-export function Card(props: { card: Character & FormDogCard }) {
+export function Card(props: { card: Character & FormDogCard; onClick?: (cardId: number) => void }) {
   const dogBlocks = [
     { title: 'Status: ', value: props.card.status },
     { title: 'Gender: ', value: props.card.gender },
@@ -29,7 +29,12 @@ export function Card(props: { card: Character & FormDogCard }) {
   };
 
   return (
-    <div className="card">
+    <div
+      className="card"
+      onClick={() => {
+        if (props.onClick) return props.onClick(props.card.id || 0);
+      }}
+    >
       <h2 className="card__dog-name">{props.card.name}</h2>
       <div className="card__img-wrap">
         {typeof props.card.image === 'string' && (

@@ -33,7 +33,7 @@ export function SearchBar(props: { onSumbit: (text: string) => void }) {
         props.onSumbit('');
       }}
     >
-      <input type="submit" value="" className="search__btn submit-btn" />
+      <input type="submit" value="" className="btn submit-btn" />
       <input
         type="search"
         value={currentText}
@@ -41,7 +41,7 @@ export function SearchBar(props: { onSumbit: (text: string) => void }) {
         onChange={(e) => setCurrentText(e.target.value)}
         placeholder="Enter character's name"
       />
-      <input type="reset" value="" className="search__btn reset-btn" />
+      <input type="reset" value="" className="btn reset-btn" />
     </form>
   );
 }
