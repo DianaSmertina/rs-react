@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { Character } from '../types/types';
 import '@testing-library/jest-dom/extend-expect';
+import { render, screen } from '@testing-library/react';
+import { Character } from '../types/types';
 import { Card } from '../components/mainCards/cardTemplate';
 
 const cardObj: Character = {
