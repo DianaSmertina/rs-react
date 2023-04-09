@@ -1,7 +1,7 @@
-import { FormDogCard } from '../../pages/formPage';
 import React, { useState } from 'react';
 import { PopUp } from './popUp';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { FormDogCard } from '../../types/types';
 
 export function MyForm(props: { onSubmit: (card: FormDogCard) => void }) {
   const [showPopup, setShowPopup] = useState(false);
@@ -25,10 +25,10 @@ export function MyForm(props: { onSubmit: (card: FormDogCard) => void }) {
   const myHandleSubmit: SubmitHandler<FormDogCard> = (data) => {
     const cardData = Object.assign({}, data);
     const photoURL =
-      cardData.image_url?.length && typeof cardData.image_url !== 'string'
-        ? window.URL.createObjectURL(cardData.image_url[0])
+      cardData.image?.length && typeof cardData.image !== 'string'
+        ? window.URL.createObjectURL(cardData.image[0])
         : '';
-    cardData.image_url = photoURL;
+    cardData.image = photoURL;
     props.onSubmit(cardData);
     showMessage();
     reset();
@@ -118,14 +118,14 @@ export function MyForm(props: { onSubmit: (card: FormDogCard) => void }) {
         <input
           type="file"
           accept="image/*"
-          {...register('image_url', {
+          {...register('image', {
             required: true,
           })}
           className="form__input-file"
           data-testid="photo"
         ></input>
         <span className="form__input-file-span"></span>
-        {errors.image_url && (
+        {errors.image && (
           <div className="form__errors" data-testid="error-message">
             Please download image
           </div>

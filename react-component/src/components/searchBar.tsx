@@ -1,33 +1,47 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FormEvent, useEffect, useRef, useState } from 'react';
 
-export function SearchBar() {
-  const [searchText, setSearchText] = useState('');
-  const searchRef = useRef(searchText);
+export function SearchBar(props: { onSumbit: (text: string) => void }) {
+  const [currentText, setCurrentText] = useState('');
+  const searchRef = useRef(currentText);
 
   useEffect(() => {
-    searchRef.current = searchText;
-  }, [searchText]);
+    searchRef.current = currentText;
+  }, [currentText]);
 
   useEffect(() => {
     const savedText = localStorage.getItem('search');
     if (savedText) {
-      setSearchText(savedText);
+      setCurrentText(savedText);
     }
-
-    return () => {
-      localStorage.setItem('search', searchRef.current);
-    };
   }, []);
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    props.onSumbit(currentText);
+    localStorage.setItem('search', searchRef.current);
+  };
+
   return (
-    <div className="search">
-      <input type="submit" value="" className="search__submit-btn" />
+    <form
+      className="search"
+      onSubmit={(e) => {
+        handleSubmit(e);
+      }}
+      onReset={() => {
+        localStorage.setItem('search', '');
+        setCurrentText('');
+        props.onSumbit('');
+      }}
+    >
+      <input type="submit" value="" className="btn submit-btn" />
       <input
         type="search"
-        value={searchText}
+        value={currentText}
         className="search__search-bar"
-        onChange={(e) => setSearchText(e.target.value)}
+        onChange={(e) => setCurrentText(e.target.value)}
+        placeholder="Enter character's name"
       />
-    </div>
+      <input type="reset" data-testid="search-reset" value="" className="btn reset-btn" />
+    </form>
   );
 }

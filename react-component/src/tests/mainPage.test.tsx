@@ -1,14 +1,20 @@
-import { render, screen } from '@testing-library/react';
+import 'whatwg-fetch';
 import React from 'react';
-import { MainPage } from '../pages/mainPage';
 import '@testing-library/jest-dom/extend-expect';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { MainPage } from '../pages/mainPage';
 import { BrowserRouter } from 'react-router-dom';
 
-test('Renders main page correctly', () => {
+test('Open modal window by card click', async () => {
   render(
     <BrowserRouter>
       <MainPage />
     </BrowserRouter>
   );
   expect(screen.getByText('Main page')).toBeInTheDocument();
+
+  const rickCard = await screen.findByText('Rick Sanchez');
+  fireEvent.click(rickCard);
+  const modalText = await screen.findByText('Location:');
+  expect(modalText).toBeInTheDocument();
 });
