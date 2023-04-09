@@ -24,9 +24,8 @@ export function CardList(props: { search: string; onClick: (cardId: number) => v
       .then((data) => {
         setCards({ isLoaded: true, result: data });
       })
-      .catch((error) => {
+      .catch(() => {
         setCards({ isLoaded: false, result: 0 });
-        console.log(error.message);
       });
   }, [props.search]);
 
