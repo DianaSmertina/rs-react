@@ -77,20 +77,9 @@ export function ModalCardInfo(props: { id: number; onClick: () => void }) {
     }
   };
 
-  const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if ((e.target as HTMLDivElement).classList.contains('card__pop-up')) {
-      props.onClick();
-    }
-  };
-
   return (
-    <div
-      className="card__pop-up pop-up"
-      onClick={(e) => {
-        handleBackgroundClick(e);
-      }}
-    >
-      <div className="pop-up__background card-modal">
+    <div className="card__pop-up pop-up" onClick={() => props.onClick()}>
+      <div className="pop-up__background card-modal" onClick={(e) => e.stopPropagation()}>
         <div className="btn card-modal__close" onClick={() => props.onClick()}></div>
         {!data.isLoaded && <Loading />}
         {data.isLoaded && makeCard(data.result)}

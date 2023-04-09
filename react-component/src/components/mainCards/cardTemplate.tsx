@@ -5,7 +5,7 @@ export function Card(props: { card: Character & FormDogCard; onClick?: (cardId: 
   const dogBlocks = [
     { title: 'Status: ', value: props.card.status },
     { title: 'Gender: ', value: props.card.gender },
-    { title: 'Species', value: props.card.species },
+    { title: 'Species: ', value: props.card.species },
   ];
 
   const formBlocks = [

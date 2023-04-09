@@ -4,9 +4,10 @@ import { Character, CharacterResponseResult } from '../../types/types';
 import { Loading } from './loading';
 
 export function CardList(props: { search: string; onClick: (cardId: number) => void }) {
-  const [cards, setCards] = useState<{ isLoaded: boolean; result: CharacterResponseResult | null }>(
-    { isLoaded: false, result: null }
-  );
+  const [cards, setCards] = useState<{
+    isLoaded: boolean;
+    result: CharacterResponseResult | null | number;
+  }>({ isLoaded: false, result: null });
 
   useEffect(() => {
     setCards((prevState) => {
@@ -14,9 +15,18 @@ export function CardList(props: { search: string; onClick: (cardId: number) => v
     });
     const savedText = localStorage.getItem('search') || '';
     fetch('https://rickandmortyapi.com/api/character/?name=' + savedText.toLowerCase())
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Characters not found');
+        }
+        return response.json();
+      })
       .then((data) => {
         setCards({ isLoaded: true, result: data });
+      })
+      .catch((error) => {
+        setCards({ isLoaded: false, result: 0 });
+        console.log(error.message);
       });
   }, [props.search]);
 
@@ -30,8 +40,9 @@ export function CardList(props: { search: string; onClick: (cardId: number) => v
 
   return (
     <div className="cards">
-      {!cards.isLoaded && <Loading />}
-      {cards.isLoaded && getCardsElem(cards?.result?.results)}
+      {!cards.isLoaded && cards.result === 0 && 'Characters not found'}
+      {!cards.isLoaded && cards.result !== 0 && <Loading />}
+      {cards.isLoaded && typeof cards?.result !== 'number' && getCardsElem(cards?.result?.results)}
     </div>
   );
 }

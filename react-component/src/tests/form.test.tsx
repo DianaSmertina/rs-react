@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { MyForm } from '../components/form/form';
-import { FormDogCard } from '../pages/formPage';
+import { FormDogCard } from '../types/types';
 
 describe('form test', () => {
   const firstCard: FormDogCard = {
@@ -12,7 +12,7 @@ describe('form test', () => {
     walkType: 'long',
     isTrained: 'yes',
     equipment: true,
-    image_url:
+    image:
       'https://ichef.bbci.co.uk/news/640/cpsprodpb/475B/production/_98776281_gettyimages-521697453.jpg',
   };
   let fakeState = [firstCard];
