@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../redux/store';
 import { Card } from './cardTemplate';
 import { Character, CharacterResponseResult } from '../../types/types';
 import { Loading } from './loading';
 
-export function CardList(props: { search: string; onClick: (cardId: number) => void }) {
+export function CardList(props: { onClick: (cardId: number) => void }) {
   const [cards, setCards] = useState<{
     isLoaded: boolean;
     result: CharacterResponseResult | null | number;
   }>({ isLoaded: false, result: null });
+  const searchText = useSelector((state: RootState) => state.search.searchText);
 
   useEffect(() => {
     setCards((prevState) => {
       return { isLoaded: false, result: prevState.result };
     });
-    const savedText = localStorage.getItem('search') || '';
-    fetch('https://rickandmortyapi.com/api/character/?name=' + savedText.toLowerCase())
+    const savedText = searchText || '';
+    fetch('https://rickandmortyapi.com/api/character/?name=' + savedText)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Characters not found');
@@ -27,7 +30,7 @@ export function CardList(props: { search: string; onClick: (cardId: number) => v
       .catch(() => {
         setCards({ isLoaded: false, result: 0 });
       });
-  }, [props.search]);
+  }, [searchText]);
 
   const getCardsElem = (cardsArr: Array<Character> | undefined) => {
     if (cardsArr) {

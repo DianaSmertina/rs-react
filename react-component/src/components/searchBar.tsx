@@ -1,24 +1,27 @@
 import React, { FormEvent, useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchText } from '../redux/searchSlice';
+import type { RootState } from '../redux/store';
 
-export function SearchBar(props: { onSumbit: (text: string) => void }) {
+export function SearchBar() {
   const [currentText, setCurrentText] = useState('');
   const searchRef = useRef(currentText);
+  const dispatch = useDispatch();
+  const searchText = useSelector((state: RootState) => state.search.searchText);
 
   useEffect(() => {
     searchRef.current = currentText;
   }, [currentText]);
 
   useEffect(() => {
-    const savedText = localStorage.getItem('search');
-    if (savedText) {
-      setCurrentText(savedText);
+    if (searchText) {
+      setCurrentText(searchText);
     }
-  }, []);
+  }, [searchText]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    props.onSumbit(currentText);
-    localStorage.setItem('search', searchRef.current);
+    dispatch(setSearchText(currentText));
   };
 
   return (
@@ -28,9 +31,8 @@ export function SearchBar(props: { onSumbit: (text: string) => void }) {
         handleSubmit(e);
       }}
       onReset={() => {
-        localStorage.setItem('search', '');
         setCurrentText('');
-        props.onSumbit('');
+        dispatch(setSearchText(''));
       }}
     >
       <input type="submit" value="" className="btn submit-btn" />
