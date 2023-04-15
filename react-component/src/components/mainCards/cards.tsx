@@ -10,6 +10,7 @@ export function CardList(props: { onClick: (cardId: number) => void }) {
     isLoaded: boolean;
     result: CharacterResponseResult | null | number;
   }>({ isLoaded: false, result: null });
+
   const searchText = useSelector((state: RootState) => state.search.searchText);
 
   useEffect(() => {

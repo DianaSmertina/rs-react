@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { PopUp } from './popUp';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormDogCard } from '../../types/types';
+import { addFormCard } from '../../redux/formSlice';
 
-export function MyForm(props: { onSubmit: (card: FormDogCard) => void }) {
+export function MyForm() {
   const [showPopup, setShowPopup] = useState(false);
   const {
     register,
@@ -14,6 +16,7 @@ export function MyForm(props: { onSubmit: (card: FormDogCard) => void }) {
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
   });
+  const dispatch = useDispatch();
 
   const showMessage = () => {
     setShowPopup(true);
@@ -29,7 +32,7 @@ export function MyForm(props: { onSubmit: (card: FormDogCard) => void }) {
         ? window.URL.createObjectURL(cardData.image[0])
         : '';
     cardData.image = photoURL;
-    props.onSubmit(cardData);
+    dispatch(addFormCard(cardData));
     showMessage();
     reset();
   };

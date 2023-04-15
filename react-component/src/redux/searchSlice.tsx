@@ -6,7 +6,7 @@ const searchSlice = createSlice({
     searchText: '',
   },
   reducers: {
-    setSearchText(state, action) {
+    setSearchText(state, action: { payload: string; type: string }) {
       state.searchText = action.payload;
     },
   },
