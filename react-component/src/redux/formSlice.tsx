@@ -6,7 +6,7 @@ type SliceState = {
 };
 const initialState: SliceState = { formCards: [] };
 
-const formSlice = createSlice({
+export const formSlice = createSlice({
   name: 'FormCards',
   initialState,
   reducers: {

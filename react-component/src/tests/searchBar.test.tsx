@@ -1,10 +1,12 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { SearchBar } from '../components/searchBar';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
+import 'whatwg-fetch';
+import { screen, fireEvent } from '@testing-library/react';
+import { SearchBar } from '../components/searchBar';
+import { renderWithProviders } from '../utils/testUtils';
 
 test('There is the search bar', () => {
-  render(<SearchBar onSumbit={(text: string) => text} />);
+  renderWithProviders(<SearchBar />);
   const searchBox = screen.getByRole('searchbox');
   expect(searchBox).toBeInTheDocument();
   fireEvent.change(searchBox, { target: { value: 'rick' } });

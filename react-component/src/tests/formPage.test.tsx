@@ -1,11 +1,13 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { render, screen } from '@testing-library/react';
+import 'whatwg-fetch';
+import { screen } from '@testing-library/react';
 import { FormPage } from '../pages/formPage';
 import { BrowserRouter } from 'react-router-dom';
+import { renderWithProviders } from '../utils/testUtils';
 
 test('Form page renders', () => {
-  render(
+  renderWithProviders(
     <BrowserRouter>
       <FormPage />
     </BrowserRouter>

@@ -1,27 +1,14 @@
-import { render, screen, fireEvent, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
+import 'whatwg-fetch';
+import { screen, fireEvent, act } from '@testing-library/react';
 import { MyForm } from '../components/form/form';
-import { FormDogCard } from '../types/types';
+import { renderWithProviders } from '../utils/testUtils';
 
 describe('form test', () => {
-  const firstCard: FormDogCard = {
-    name: 'Tom',
-    startDate: '2024-03-30',
-    walkType: 'long',
-    isTrained: 'yes',
-    equipment: true,
-    image:
-      'https://ichef.bbci.co.uk/news/640/cpsprodpb/475B/production/_98776281_gettyimages-521697453.jpg',
-  };
-  let fakeState = [firstCard];
-  const handler = (card: FormDogCard) => {
-    fakeState = [...fakeState, card];
-  };
-
   it('should render all fields', () => {
-    render(<MyForm onSubmit={(card: FormDogCard) => handler(card)} />);
+    renderWithProviders(<MyForm />);
     expect(screen.getByText('Dog name:')).toBeInTheDocument();
     expect(screen.getByText(/Select a date/i)).toBeInTheDocument();
     expect(screen.getByText('Choose walk type:')).toBeInTheDocument();
@@ -31,7 +18,7 @@ describe('form test', () => {
   });
 
   it('should return error if name and date uncorrect and file does not downloaded', async () => {
-    render(<MyForm onSubmit={(card: FormDogCard) => handler(card)} />);
+    renderWithProviders(<MyForm />);
     const dogName = screen.getByTestId<HTMLInputElement>('dogName');
     const date = screen.getByTestId<HTMLInputElement>('startDate');
     await act(async () => {
@@ -48,7 +35,7 @@ describe('form test', () => {
   });
 
   it('if there are no errors, form should resets and confirm message appears', async () => {
-    render(<MyForm onSubmit={(card: FormDogCard) => handler(card)} />);
+    renderWithProviders(<MyForm />);
 
     const mockCreateObjectURL = jest.fn();
     window.URL.createObjectURL = mockCreateObjectURL;
