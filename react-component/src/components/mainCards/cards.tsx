@@ -1,33 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useGetCharactersByNameQuery } from '../../redux/rickAndMortyApi';
+import type { RootState } from '../../redux/store';
 import { Card } from './cardTemplate';
-import { Character, CharacterResponseResult } from '../../types/types';
+import { Character } from '../../types/types';
 import { Loading } from './loading';
 
-export function CardList(props: { search: string; onClick: (cardId: number) => void }) {
-  const [cards, setCards] = useState<{
-    isLoaded: boolean;
-    result: CharacterResponseResult | null | number;
-  }>({ isLoaded: false, result: null });
-
-  useEffect(() => {
-    setCards((prevState) => {
-      return { isLoaded: false, result: prevState.result };
-    });
-    const savedText = localStorage.getItem('search') || '';
-    fetch('https://rickandmortyapi.com/api/character/?name=' + savedText.toLowerCase())
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Characters not found');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setCards({ isLoaded: true, result: data });
-      })
-      .catch(() => {
-        setCards({ isLoaded: false, result: 0 });
-      });
-  }, [props.search]);
+export function CardList(props: { onClick: (cardId: number) => void }) {
+  const searchText = useSelector((state: RootState) => state.search.searchText);
+  const savedText = searchText || '';
+  const { data, isError, isFetching } = useGetCharactersByNameQuery(savedText);
 
   const getCardsElem = (cardsArr: Array<Character> | undefined) => {
     if (cardsArr) {
@@ -39,9 +21,9 @@ export function CardList(props: { search: string; onClick: (cardId: number) => v
 
   return (
     <div className="cards">
-      {!cards.isLoaded && cards.result === 0 && 'Characters not found'}
-      {!cards.isLoaded && cards.result !== 0 && <Loading />}
-      {cards.isLoaded && typeof cards?.result !== 'number' && getCardsElem(cards?.result?.results)}
+      {isFetching && <Loading />}
+      {isError && 'Characters not found'}
+      {!isFetching && !isError && data && data.results.length > 0 && getCardsElem(data.results)}
     </div>
   );
 }

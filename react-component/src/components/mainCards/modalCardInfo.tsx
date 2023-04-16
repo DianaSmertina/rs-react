@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Character } from '../../types/types';
 import { Loading } from './loading';
+import { useGetCharactersByIdQuery } from '../../redux/rickAndMortyApi';
 
 export function ModalCardInfo(props: { id: number; onClick: () => void }) {
-  const [data, setData] = useState<{ isLoaded: boolean; result: null | Character }>({
-    isLoaded: false,
-    result: null,
-  });
-
-  useEffect(() => {
-    fetch('https://rickandmortyapi.com/api/character/' + props.id)
-      .then((response) => response.json())
-      .then((data) => {
-        setData({ isLoaded: true, result: data });
-      });
-  }, [props.id]);
+  const { data, isLoading } = useGetCharactersByIdQuery(props.id);
 
   const makeListEpisodeInText = (episodeArr: Array<string> | undefined) => {
     if (episodeArr) {
@@ -34,7 +24,7 @@ export function ModalCardInfo(props: { id: number; onClick: () => void }) {
     }
   };
 
-  const makeCard = (cardData: Character | null) => {
+  const makeCard = (cardData: Character | undefined) => {
     if (cardData) {
       return (
         <div className="modal-info">
@@ -81,8 +71,8 @@ export function ModalCardInfo(props: { id: number; onClick: () => void }) {
     <div className="card__pop-up pop-up" onClick={() => props.onClick()}>
       <div className="pop-up__background card-modal" onClick={(e) => e.stopPropagation()}>
         <div className="btn card-modal__close" onClick={() => props.onClick()}></div>
-        {!data.isLoaded && <Loading />}
-        {data.isLoaded && makeCard(data.result)}
+        {isLoading && <Loading />}
+        {!isLoading && makeCard(data)}
       </div>
     </div>
   );

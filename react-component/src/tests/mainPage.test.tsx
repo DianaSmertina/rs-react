@@ -1,12 +1,13 @@
 import 'whatwg-fetch';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import { MainPage } from '../pages/mainPage';
 import { BrowserRouter } from 'react-router-dom';
+import { renderWithProviders } from '../utils/testUtils';
 
 test('Open modal window by card click', async () => {
-  render(
+  renderWithProviders(
     <BrowserRouter>
       <MainPage />
     </BrowserRouter>

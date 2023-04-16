@@ -1,12 +1,12 @@
 import 'whatwg-fetch';
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { render } from '@testing-library/react';
 import App from '../App';
 import { BrowserRouter } from 'react-router-dom';
+import { renderWithProviders } from '../utils/testUtils';
 
 test('App component', async () => {
-  const { getByText } = render(
+  const { getByText } = renderWithProviders(
     <BrowserRouter>
       <App />
     </BrowserRouter>

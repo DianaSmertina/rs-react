@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../redux/store';
 import { Card } from '../components/mainCards/cardTemplate';
 import { MyForm } from '../components/form/form';
-import { FormDogCard } from '../types/types';
 
 export function FormPage() {
-  const [cards, setCards] = useState<Array<FormDogCard | never>>([]);
+  const cards = useSelector((state: RootState) => state.formCard.formCards);
 
-  const addNewCard = (card: FormDogCard) => {
-    setCards([...cards, card]);
-  };
-
-  const cardsArr = cards.slice(0).map((el, i) => <Card card={el} key={i} />);
   return (
     <main>
-      <MyForm onSubmit={(card: FormDogCard) => addNewCard(card)} />
-      <div className="cards">{cardsArr}</div>
+      <MyForm />
+      <div className="cards">
+        {cards.map((el, i) => (
+          <Card card={el} key={i} />
+        ))}
+      </div>
     </main>
   );
 }
