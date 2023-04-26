@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import * as ReduxToolkit from '@reduxjs/toolkit/dist/index.js';
+
+const { createSlice } = ReduxToolkit;
 
 export const searchSlice = createSlice({
   name: 'Search',

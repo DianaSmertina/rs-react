@@ -3,7 +3,7 @@ import searchReducer from './searchSlice';
 import formCard from './formSlice';
 import { rickAndMortyApi } from './rickAndMortyApi';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   search: searchReducer,
   formCard: formCard,
   [rickAndMortyApi.reducerPath]: rickAndMortyApi.reducer,

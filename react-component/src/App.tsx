@@ -6,7 +6,7 @@ import { ErrorPage } from './pages/notFound';
 import { Layout } from './components/layout';
 import { FormPage } from './pages/formPage';
 
-export function App() {
+function App() {
   return (
     <>
       <Routes>

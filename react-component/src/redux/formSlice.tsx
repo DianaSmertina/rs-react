@@ -1,5 +1,8 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import * as ReduxToolkit from '@reduxjs/toolkit/dist/index.js';
+import { PayloadAction } from '@reduxjs/toolkit';
 import { FormDogCard } from '../types/types';
+
+const { createSlice } = ReduxToolkit;
 
 type SliceState = {
   formCards: Array<FormDogCard>;
