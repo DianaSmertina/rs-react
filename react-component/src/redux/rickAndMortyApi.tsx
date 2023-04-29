@@ -1,9 +1,8 @@
 import * as RTKQuery from '@reduxjs/toolkit/dist/query/react/index.js';
 import { CharacterResponseResult, Character } from '../types/types';
-
-// const { createApi, fetchBaseQuery } = RTKQuery;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const { createApi, fetchBaseQuery } = ((RTKQuery as any).default ?? RTKQuery) as typeof RTKQuery;
+const { createApi, fetchBaseQuery } = ((RTKQuery as TypeRTKQuery).default ??
+  RTKQuery) as typeof RTKQuery;
+type TypeRTKQuery = typeof RTKQuery & { default?: unknown };
 
 export const rickAndMortyApi = createApi({
   reducerPath: 'rickAndMortyApi',
