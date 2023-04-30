@@ -70,7 +70,11 @@ export function ModalCardInfo(props: { id: number; onClick: () => void }) {
   return (
     <div className="card__pop-up pop-up" onClick={() => props.onClick()}>
       <div className="pop-up__background card-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="btn card-modal__close" onClick={() => props.onClick()}></div>
+        <div
+          className="btn card-modal__close"
+          data-testid="close-card"
+          onClick={() => props.onClick()}
+        ></div>
         {isLoading && <Loading />}
         {!isLoading && makeCard(data)}
       </div>

@@ -4,4 +4,7 @@ export default {
     '^.+\\.tsx?$': 'ts-jest',
   },
   setupFilesAfterEnv: ['./jest.setup.ts'],
+  moduleNameMapper: {
+    '\\.(css|scss)$': '<rootDir>/src/tests/mocks/styleMock.ts',
+  },
 };

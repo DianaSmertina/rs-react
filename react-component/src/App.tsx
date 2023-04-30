@@ -1,4 +1,3 @@
-import React from 'react';
 import './style/index.scss';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { MainPage } from './pages/mainPage';
