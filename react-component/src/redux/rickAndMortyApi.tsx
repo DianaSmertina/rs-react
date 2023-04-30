@@ -1,5 +1,8 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import * as RTKQuery from '@reduxjs/toolkit/dist/query/react/index.js';
 import { CharacterResponseResult, Character } from '../types/types';
+const { createApi, fetchBaseQuery } = ((RTKQuery as TypeRTKQuery).default ??
+  RTKQuery) as typeof RTKQuery;
+type TypeRTKQuery = typeof RTKQuery & { default?: unknown };
 
 export const rickAndMortyApi = createApi({
   reducerPath: 'rickAndMortyApi',

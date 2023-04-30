@@ -1,9 +1,13 @@
-import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
+import { PreloadedState } from '@reduxjs/toolkit';
 import searchReducer from './searchSlice';
 import formCard from './formSlice';
 import { rickAndMortyApi } from './rickAndMortyApi';
+import * as toolkitRaw from '@reduxjs/toolkit';
+const { combineReducers, configureStore } = ((toolkitRaw as TypeToolkitRaw).default ??
+  toolkitRaw) as typeof toolkitRaw;
+type TypeToolkitRaw = typeof toolkitRaw & { default?: unknown };
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   search: searchReducer,
   formCard: formCard,
   [rickAndMortyApi.reducerPath]: rickAndMortyApi.reducer,

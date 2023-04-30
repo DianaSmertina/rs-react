@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "lib": ["dom", "esnext", "dom.iterable"],
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
@@ -13,8 +13,14 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": "./src",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["node", "vite/client", "@testing-library/jest-dom"],
   },
-  "include": ["./src/**/*", "styled.d.ts", "jest.setup.ts"]
+  "include": ["./src/**/*", "styled.d.ts", "jest.setup.ts", "server.ts"],
+  "exclude": ["src/**/*.test.ts"],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
 }
 

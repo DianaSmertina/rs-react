@@ -1,0 +1,342 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+.header .active {
+  color: blue;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type=text]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type=text]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+  display: none;
+}
+
+.btn {
+  width: 25px;
+  height: 25px;
+  border: none;
+  outline: none;
+  background-color: white;
+  background-size: 25px 25px;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.btn:active {
+  transform: scale(1.1);
+  background-color: rgb(235, 231, 231);
+  border-radius: 5px;
+}
+
+.submit-btn {
+  background-image: url(../assets/icons/search-outline.svg);
+  margin: 0 5px;
+}
+
+.reset-btn {
+  background-image: url(../assets/icons/delete.svg);
+  position: absolute;
+  right: 5px;
+}
+
+.card-modal__close {
+  background-image: url(../assets/icons/delete.svg);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+header {
+  width: 100%;
+  height: 70px;
+  background-color: #d2ece2;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 0 40px;
+}
+
+.search {
+  height: 35px;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 20px auto 30px;
+}
+
+.search__search-bar {
+  border: none;
+  outline: none;
+  width: 80%;
+  vertical-align: middle;
+  position: relative;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  gap: 30px;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.card {
+  width: 310px;
+  height: 310px;
+  box-shadow: 0 0 5px 5px rgb(121, 118, 118);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.card__dog-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  max-width: calc(100% - 20px);
+  max-height: 100%;
+  margin: auto;
+}
+
+.card__img-wrap {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.card__dog-name {
+  text-align: center;
+}
+
+.card__dog-info {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.dog-description {
+  height: 150px;
+  overflow: scroll;
+  vertical-align: middle;
+  display: table-cell;
+  padding-top: 10px;
+}
+
+.dog-description::-webkit-scrollbar {
+  width: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  gap: 20px;
+  position: relative;
+  margin: 0 auto;
+  border: 0.3px rgba(180, 179, 179, 0.61) solid;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgb(210, 236, 226) 0%, rgba(66, 231, 210, 0.6503851541) 100%);
+}
+
+.form__title {
+  text-align: center;
+}
+
+.form__input {
+  display: block;
+  width: 100%;
+  border: 0.3px rgba(180, 179, 179, 0.61) solid;
+  border-radius: 10px;
+  margin-top: 5px;
+  height: 30px;
+}
+
+.form__submit {
+  width: 70px;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  height: 30px;
+  border: 0.3px rgba(180, 179, 179, 0.61) solid;
+  border-radius: 10px;
+  background-color: rgb(59, 175, 232);
+  cursor: pointer;
+}
+
+.form__submit:hover {
+  background-color: rgb(8, 108, 157);
+}
+
+.switch-question {
+  margin-right: 10px;
+}
+
+.form__errors {
+  color: red;
+  font-size: 1.3rem;
+}
+
+.pop-up {
+  background-color: rgba(28, 28, 28, 0.822);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  z-index: 5;
+}
+
+.pop-up__background {
+  width: 50%;
+  max-width: 400px;
+  background-color: white;
+  position: absolute;
+  padding: 0 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+}
+
+.form-pop-up__background {
+  height: 20vh;
+}
+
+.form__switch {
+  display: flex;
+}
+
+.switch-question {
+  margin-right: 10px;
+}
+
+.form__input-file {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.form__input-file-span {
+  display: block;
+  width: 100px;
+  height: 35px;
+  border: 0.3px rgba(180, 179, 179, 0.61) solid;
+  border-radius: 10px;
+  background-color: rgb(59, 175, 232);
+  background-image: url(../assets/icons/download.svg);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.switch-label {
+  margin-right: 10px;
+}
+
+.switch-radio {
+  margin-left: 5px;
+}
+
+.form__checkbox-label, .switch-label {
+  position: relative;
+}
+
+.form__checkbox {
+  margin-left: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.loading__img {
+  animation: animation 1s infinite normal running;
+}
+
+@keyframes animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.card-modal {
+  height: 80vh;
+}
+
+.modal-info__header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=index.css.map */

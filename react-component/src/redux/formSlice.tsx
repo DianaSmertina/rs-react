@@ -1,5 +1,8 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction } from '@reduxjs/toolkit';
 import { FormDogCard } from '../types/types';
+import * as toolkitRaw from '@reduxjs/toolkit';
+const { createSlice } = ((toolkitRaw as TypeToolkitRaw).default ?? toolkitRaw) as typeof toolkitRaw;
+type TypeToolkitRaw = typeof toolkitRaw & { default?: unknown };
 
 type SliceState = {
   formCards: Array<FormDogCard>;

@@ -1,4 +1,4 @@
-import React from 'react';
+import './style/index.scss';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { MainPage } from './pages/mainPage';
 import { AboutPage } from './pages/aboutPage';
@@ -6,7 +6,7 @@ import { ErrorPage } from './pages/notFound';
 import { Layout } from './components/layout';
 import { FormPage } from './pages/formPage';
 
-export function App() {
+function App() {
   return (
     <>
       <Routes>
