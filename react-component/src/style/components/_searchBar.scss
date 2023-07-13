@@ -1,0 +1,18 @@
+.search {
+  height: 35px;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 20px auto 30px;
+}
+
+.search__search-bar {
+  border: none;
+  outline: none;
+  width: 80%;
+  vertical-align: middle;
+  position: relative;
+}

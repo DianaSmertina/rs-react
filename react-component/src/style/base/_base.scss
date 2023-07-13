@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+  
+html {
+  font-size: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+.header .active {
+  color: blue;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a {
+  text-decoration: none
+}
+
+input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }

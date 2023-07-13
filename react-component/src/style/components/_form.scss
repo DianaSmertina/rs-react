@@ -1,0 +1,134 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  gap: 20px;
+	position: relative;
+	margin: 0 auto;
+	border: 0.3px rgba(180, 179, 179, 0.61) solid;
+	padding: 10px;
+	border-radius: 10px;
+	background: linear-gradient(90deg, rgba(210,236,226,1) 0%, rgba(66,231,210,0.6503851540616247) 100%);
+}
+
+.form__title {
+	text-align: center;
+}
+
+.form__input {
+	display: block;
+	width: 100%;
+	border: 0.3px rgba(180, 179, 179, 0.61) solid;
+	border-radius: 10px;
+	margin-top: 5px;
+	height: 30px;
+}
+
+.form__submit {
+  width: 70px;
+  text-align: center;
+	position: relative;
+	margin: 0 auto;
+	height: 30px;
+	border: 0.3px rgba(180, 179, 179, 0.61) solid;
+	border-radius: 10px;
+	background-color:rgb(59, 175, 232);
+	cursor: pointer;
+}
+
+.form__submit:hover {
+	background-color:rgb(8, 108, 157);
+}
+
+.switch-question {
+  margin-right: 10px;
+}
+
+.form__errors {
+	color: red;
+	font-size: 1.3rem;
+}
+
+.pop-up {
+	background-color: rgba(28, 28, 28, 0.822);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  z-index: 5;
+}
+.pop-up__background {
+	width: 50%;
+	max-width: 400px;
+	background-color: white;
+	position: absolute;
+	padding: 0 20px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 7px;
+}
+
+.form-pop-up__background {
+	height: calc(100vh * 0.2);
+}
+
+.form__switch {
+  display: flex;
+}
+
+.switch-question {
+	margin-right: 10px;
+}
+
+.form__input-file {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+
+.form__input-file-span {
+	display: block;
+  width: 100px;
+  height: 35px;
+	border: 0.3px rgba(180, 179, 179, 0.61) solid;
+	border-radius: 10px;
+	background-color:rgb(59, 175, 232);
+	background-image: url(../assets/icons/download.svg);
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+	text-align: center;
+	padding-top: 3px;
+}
+
+.switch-label {
+	margin-right: 10px;
+}
+
+.switch-radio {
+	margin-left: 5px;
+}
+
+.form__checkbox-label, .switch-label {
+	position: relative;
+}
+
+.form__checkbox {
+	margin-left: 10px;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+}
