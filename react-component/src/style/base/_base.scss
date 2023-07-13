@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+  
+html {
+  font-size: 10px;
+  font-family: 'Inter', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+.header .active {
+  color: blue;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a {
+  text-decoration: none
+}
